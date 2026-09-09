@@ -92,6 +92,6 @@ body {
   padding: 6px 0;
   margin-top: 20px;
 }
-.login-container #errorMessage{
-    color: red;
+.login-container #errorMessage {
+  color: red;
 }

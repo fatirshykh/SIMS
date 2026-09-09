@@ -4,8 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign-Up SIMS</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="stylesheet" href="/assets/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
   </head>
   <style>
     .password_req {
@@ -44,7 +50,7 @@
         <button type="submit">Submit</button>
 
         <p id="errorMessage"></p>
-        <p>Don't have an account <a href="#">Create One</a></p>
+        <p>Already have an account <a href="/login">Login Now</a></p>
       </form>
     </div>
 
@@ -54,6 +60,7 @@
       let name = document.getElementById("name");
       let email = document.getElementById("email");
       let password = document.getElementById("password");
+      let phone = document.getElementById("phone");
       let confirm_password = document.getElementById("confirm-password");
       let errorMessage = document.getElementById("errorMessage");
       let check = document.getElementById("check");
@@ -79,7 +86,7 @@
         }
       });
 
-      form.addEventListener("submit", function (event) {
+      form.addEventListener("submit", async function (event) {
         event.preventDefault();
         errorMessage.innerHTML = "";
 
@@ -102,6 +109,35 @@
 
         if (check.checked == false) {
           errorMessage.innerHTML = "check the terms and conditions";
+        }
+
+        // authentication
+        let signupData = {
+          fullname: name.value,
+          username: user.value,
+          email: email.value,
+          phone: phone.value,
+          password: password.value,
+        };
+
+        // sends request to flask
+        let response = await fetch("/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signupData),
+        });
+
+        let data = await response.json();
+
+        if (data.success) {
+          errorMessage.style.color = "green";
+          errorMessage.innerHTML = data.message;
+          form.reset();
+        } else {
+          errorMessage.style.color = "red";
+          errorMessage.innerHTML = data.message;
         }
       });
     </script>
