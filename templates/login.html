@@ -95,6 +95,8 @@
           errorMessage.style.color = "green";
           errorMessage.innerHTML = data.message;
           form.reset();
+
+          window.location.href = "/dashboard";
         } else {
           errorMessage.style.color = "red";
           errorMessage.innerHTML = data.message;
