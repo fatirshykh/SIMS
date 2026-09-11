@@ -9,6 +9,6 @@ CREATE TABLE
         username VARCHAR(50) NOT NULL UNIQUE,
         email VARCHAR(100) NOT NULL UNIQUE,
         phone VARCHAR(20) NOT NULL,
-        password VARCHAR(100) NOT NULL,
+        password VARCHAR(500) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
     )

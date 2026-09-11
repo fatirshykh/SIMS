@@ -22,36 +22,121 @@
     }
   </style>
   <body>
-    <div class="login-container">
-      <h2>Sign-Up Form</h2>
-      <span>Stock & Inventory management system</span>
-      <form action="#" id="form">
-        <input id="username" type="text" placeholder="Username" />
-        <input id="name" type="text" placeholder="Full Name" />
-        <input id="email" type="email" placeholder="Email" />
-        <input id="phone" type="tel" placeholder="Phone" />
-        <input id="password" type="password" placeholder="Password" />
+    <div class="page-container signup-page">
+      <!-- LEFT SIDE: BRAND & HERO SHOWCASE -->
+      <div class="brand-side">
+        <div class="brand-content">
+          <div class="logo-box">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span>SIMS</span>
+          </div>
+          <div class="hero-text">
+            <h1>Stock & Inventory<br />Management System</h1>
+          </div>
 
-        <div class="password_req">
-          <span id="lengthcheck">x length must be >7</span><br />
-          <span id="lettercheck">x atleast 1 letter</span><br />
-          <span id="digitcheck">x atleast 1 digit</span><br />
-          <span id="specialchar">x atleast 1 special character</span><br />
-        </div>
-        <input
-          id="confirm-password"
-          type="text"
-          placeholder="Confirm Password"
-        />
-        <div class="checkbox">
-          <input type="checkbox" id="check" />
-          <label for="#">agree with Terms and Conditions</label>
-        </div>
-        <button type="submit">Submit</button>
+          <div class="hero-text">
+            <h1>Join Our Platform</h1>
+            <p>
+              Get complete control over your stock, streamline warehouse
+              operations, and scale your business effortlessly.
+            </p>
+          </div>
 
-        <p id="errorMessage"></p>
-        <p>Already have an account <a href="/login">Login Now</a></p>
-      </form>
+          <div class="feature-pills">
+            <div class="pill">
+              <i class="fa-solid fa-user-shield"></i> Role Permissions
+            </div>
+            <div class="pill">
+              <i class="fa-solid fa-bell"></i> Stock Alerts
+            </div>
+            <div class="pill"><i class="fa-solid fa-bolt"></i> Fast Setup</div>
+          </div>
+        </div>
+
+        <!-- Background Shapes -->
+        <div class="circle-shape shape-1"></div>
+        <div class="circle-shape shape-2"></div>
+      </div>
+
+      <!-- RIGHT SIDE: SIGN-UP FORM -->
+      <div class="login-container">
+        <div class="form-header">
+          <h2>Create Account</h2>
+          <span>Stock & Inventory management system</span>
+        </div>
+
+        <form action="#" id="form">
+          <div class="input">
+            <div class="input-row">
+              <div class="field-wrapper">
+                <label for="username">Username</label>
+                <input id="username" type="text" placeholder="Username" />
+              </div>
+
+              <div class="field-wrapper">
+                <label for="name">Full Name</label>
+                <input id="name" type="text" placeholder="Full Name" />
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field-wrapper">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Email" />
+              </div>
+
+              <div class="field-wrapper">
+                <label for="phone">Phone</label>
+                <input id="phone" type="tel" placeholder="Phone" />
+              </div>
+            </div>
+
+            <div class="field-wrapper">
+              <label for="password">Password</label>
+              <input id="password" type="password" placeholder="Password" />
+            </div>
+
+            <!-- Password Requirements Checklist -->
+            <div class="password_req">
+              <span id="lengthcheck"
+                ><i class="fa-solid fa-xmark"></i> Length must be &gt; 7</span
+              >
+              <span id="lettercheck"
+                ><i class="fa-solid fa-xmark"></i> At least 1 letter</span
+              >
+              <span id="digitcheck"
+                ><i class="fa-solid fa-xmark"></i> At least 1 digit</span
+              >
+              <span id="specialchar"
+                ><i class="fa-solid fa-xmark"></i> At least 1 special
+                character</span
+              >
+            </div>
+
+            <div class="field-wrapper">
+              <label for="confirm-password">Confirm Password</label>
+              <input
+                id="confirm-password"
+                type="password"
+                placeholder="Confirm Password"
+              />
+            </div>
+          </div>
+
+          <div class="checkbox">
+            <input type="checkbox" id="check" />
+            <label for="check">I agree with Terms and Conditions</label>
+          </div>
+
+          <button type="submit">Submit</button>
+
+          <!-- Message container preserved for JS logic -->
+          <p id="errorMessage"></p>
+          <p class="signup-link">
+            Already have an account? <a href="/login">Login Now</a>
+          </p>
+        </form>
+      </div>
     </div>
 
     <script>

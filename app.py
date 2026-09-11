@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 app.secret_key = "SIMS_FATIR_DEV_STUDIO_121"
 
+
 db = mysql.connector.connect(
     user=config.DB_USER,
     host=config.DB_HOST,
@@ -93,13 +94,16 @@ def login():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+
+    username = session["username"]
+
+    return render_template("dashboard.html", full_name=username)
 
 
 @app.route("/logout")
 def logout():
     session.clear()
-    return render_template("login.html")
+    return redirect(url_for("home"))
 
 
 if __name__ == "__main__":

@@ -1,97 +1,368 @@
 :root {
-  --color-1: #f29191;
-  --color-2: #b1e5e6;
-  --color-3: #4a4a4a;
-  --color-white: #ffff;
-  --color-black: #000;
+  --color-1: #e06d6d;
+  --color-1-hover: #cf5b5b;
+  --color-2: #eaf6f7;
+  --color-3: #2d3748;
+  --color-muted: #718096;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-border: #e2e8f0;
+
   --font-primary: "Playfair Display", serif;
   --font-secondary: "Montserrat", sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: var(--color-2);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
+  font-family: var(--font-secondary);
 }
-.login-container {
-  padding: 15px;
+
+/* Main Split Screen Container */
+.page-container {
+  display: flex;
+  width: 600px;
+  max-width: 95%;
+  height: 540px !important;
   background-color: var(--color-white);
-  border-radius: 12px;
-  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
 }
+
+/* ================= LEFT SIDE (BRAND AREA) ================= */
+.brand-side {
+  flex: 1;
+  background: linear-gradient(135deg, #2b3a4a 0%, #1a232c 100%);
+  color: var(--color-white);
+  padding: 22px;
+  height: 690px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 32px;
+  top: -100px;
+
+}
+
+.logo-box i {
+  font-size: 28px;
+  color: var(--color-1);
+}
+
+.logo-box span {
+  font-family: var(--font-primary);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-text h1 {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.hero-text p {
+  font-size: 13px;
+  color: #a0aec0;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill i {
+  color: var(--color-1);
+}
+
+/* Background Decorative Circles */
+.circle-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(224, 109, 109, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -80px;
+  right: -80px;
+}
+
+.shape-2 {
+  width: 250px;
+  height: 250px;
+  bottom: -60px;
+  left: -60px;
+}
+
+/* ================= RIGHT SIDE (FORM AREA) ================= */
+.login-container {
+  flex: 1;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-white);
+}
+
+.form-header {
+  margin-bottom: 18px;
+}
+
 .login-container h2 {
   font-family: var(--font-primary);
+  font-size: 20px;
+  color: var(--color-3);
+  margin-bottom: 6px;
 }
+
 .login-container span {
   font-family: var(--font-secondary);
-  font-size: 12px;
+  font-size: 11px;
+  color: var(--color-muted);
 }
+
 .login-container form {
-  padding: 10px;
-  padding-top: 30px;
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
+
 .login-container form .input {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
-.login-container form input {
-  padding: 10px 12px;
-  border: none;
-  outline: none;
 
-  border-bottom: 2px solid var(--color-3);
-  width: 270px;
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
 }
+
+.field-wrapper label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-3);
+  display: none;
+}
+
+.login-container form input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 13px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  outline: none;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+}
+
 .login-container form input:focus {
-  border-bottom: 2px solid var(--color-1);
+  border-color: var(--color-1);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(224, 109, 109, 0.15);
 }
+
 .login-container form .password {
   display: flex;
   position: relative;
+  width: 100%;
 }
+
 .login-container form .password i {
-  background-color: transparent;
-  font-size: 15px;
-  cursor: pointer;
   position: absolute;
-  right: 10px;
-  bottom: 12px;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 15px;
 }
+
+.login-container form .password i:hover {
+  color: var(--color-3);
+}
+
 .login-container form .checkbox {
   display: flex;
-  gap: 5px;
-  padding: 12px 0;
+  gap: 8px;
+  padding: 16px 0;
   align-items: center;
 }
+
 .login-container form .checkbox input {
-  height: 12px;
-  width: 12px;
+  accent-color: var(--color-1);
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
 }
+
+.login-container form .checkbox label {
+  font-size: 13px;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
 .login-container form button {
-  padding: 8px 30px;
+  width: 100%;
+  padding: 12px;
   background-color: var(--color-1);
+  color: var(--color-white);
   border: none;
   font-family: var(--font-secondary);
-  font-weight: 500;
-  border-radius: 6px;
-  text-transform: uppercase;
-  filter: drop-shadow(2px 2px 2px var(--color-3));
-  transition: all 0.5s ease-in-out;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
+
+.login-container form button:hover {
+  background-color: var(--color-1-hover);
+}
+
 .login-container form button:active {
-  filter: drop-shadow(0px 0px 0px var(--color-3));
-  background-color: #f08484;
+  transform: scale(0.99);
 }
-.login-container form p {
-  padding: 6px 0;
-  margin-top: 20px;
-}
+
+/* Error message styling */
 .login-container #errorMessage {
-  color: red;
+  color: #e53e3e;
+  font-size: 12px;
+  margin-top: 10px;
+  min-height: 16px;
+  text-align: center;
+}
+
+.login-container p.signup-link {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-top: 16px;
+  text-align: center;
+}
+
+.login-container p.signup-link a {
+  color: var(--color-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-container p.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .brand-side {
+    display: none; /* Hides left sidebar gracefully on small screens */
+  }
+  .page-container {
+    width: 400px;
+    height: auto;
+  }
+}
+
+/* ================= SIGNUP PAGE CUSTOM OVERRIDES ================= */
+
+/* Slightly increase container height & width to cleanly fit extra fields */
+.page-container.signup-page {
+  height: 680px;
+  width: 980px;
+}
+
+/* Two-column field layout for compact registration forms */
+.input-row {
+  display: flex;
+  gap: 12px;
+}
+
+.input-row .field-wrapper {
+  flex: 1;
+}
+
+/* Password Requirement Checklist Styling */
+.password_req {
+  background-color: #f8fafc;
+  border: 1px dashed var(--color-border);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.password_req span {
+  font-size: 11px;
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.password_req span i {
+  font-size: 10px;
+}
+
+/* Helper utility classes for your JS validation script */
+.password_req span.valid {
+  color: #38a169; /* Green text when criteria met */
+  font-weight: 500;
+}
+
+.password_req span.invalid {
+  color: #e53e3e; /* Red text when criteria failed */
 }
